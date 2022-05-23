@@ -7,4 +7,7 @@ export class Courseowner {
 
   @PrimaryColumn()
   teacherID: string;
+
+  @Column()
+  courseSection: string;
 }
