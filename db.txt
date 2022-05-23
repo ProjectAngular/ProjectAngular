@@ -1,0 +1,16 @@
+{
+    "courseCode": "040613393",
+    "courseTitle": "NUMERICAL METHODS",
+    "courseCredit": 3,
+    "courseTimestart": "13.00",
+    "courseTimeend": "16.00",
+    "courseDate": "W",
+    "courseLocation": "78-619",
+    "courseOnline": "Google Classroom: รหัสเข้าชั้นเรียน 7elhuse",
+    "courseSection": 1
+}
+{
+    "teacherID": "0406012",
+    "teacherName": "ชีวเทพ เทศทองลา",
+    "teacherIdennum": "3165500647678"
+}
