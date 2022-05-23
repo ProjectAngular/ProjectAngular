@@ -1,12 +1,13 @@
 <table mat-table [dataSource]="Courses" class="mat-elevation-z8">
 
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
+  <ng-container matColumnDef="No">
+    <th mat-header-cell *matHeaderCellDef> No </th>
+    <td mat-cell *matCellDef="let course"> {{course.courseID}} </td>
+  </ng-container>
 
-  <!-- Position Column -->
   <ng-container matColumnDef="Code">
     <th mat-header-cell *matHeaderCellDef> Code </th>
-    <td mat-cell *matCellDef="let course"> {{course.courseCode} </td>
+    <td mat-cell *matCellDef="let course"> {{course.courseCode}} </td>
   </ng-container>
 
   <ng-container matColumnDef="Title">
@@ -14,42 +15,49 @@
     <td mat-cell *matCellDef="let course"> {{course.courseTitle}} </td>
   </ng-container>
 
-  <!-- Weight Column -->
   <ng-container matColumnDef="Section">
     <th mat-header-cell *matHeaderCellDef> Section </th>
     <td mat-cell *matCellDef="let course"> {{course.courseSection}} </td>
   </ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
+  <ng-container matColumnDef="Credit">
     <th mat-header-cell *matHeaderCellDef> Credit </th>
     <td mat-cell *matCellDef="let course"> {{course.courseCredit}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="symbol">
+  <ng-container matColumnDef="Start">
     <th mat-header-cell *matHeaderCellDef> Start </th>
     <td mat-cell *matCellDef="let course"> {{course.courseTimestart}} </td>
   </ng-container>
 
 
-  <ng-container matColumnDef="symbol">
+  <ng-container matColumnDef="End">
     <th mat-header-cell *matHeaderCellDef> End </th>
     <td mat-cell *matCellDef="let course"> {{course.courseTimeend}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="symbol">
+  <ng-container matColumnDef="Date">
     <th mat-header-cell *matHeaderCellDef> Date </th>
     <td mat-cell *matCellDef="let course"> {{course.courseDate}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="symbol">
+  <ng-container matColumnDef="Location">
     <th mat-header-cell *matHeaderCellDef> Location </th>
     <td mat-cell *matCellDef="let course"> {{course.courseLocation}} </td>
   </ng-container>
 
-  <ng-container matColumnDef="symbol">
+  <ng-container matColumnDef="Online">
     <th mat-header-cell *matHeaderCellDef> Online </th>
     <td mat-cell *matCellDef="let course"> {{course.courseOnline}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Detail">
+    <th mat-header-cell *matHeaderCellDef> </th>
+    <td mat-cell *matCellDef="let course">
+      <button type="button" class="button is-danger">Edit</button>
+      <button type="button" class="button is-warning">Delete</button>
+    </td>
+
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

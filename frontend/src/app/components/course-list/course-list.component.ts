@@ -9,7 +9,7 @@ import { RegistrationService } from 'src/app/service/registration.service';
 export class CourseListComponent implements OnInit {
 
   Courses:any = [];
-  displayedColumns: string[] = ['Code', 'Title', 'Section',  'Credit', 'TimeStart','TimeEnd', 'Date', 'Location', 'Online'];
+  displayedColumns: string[] = ['No', 'Code', 'Title', 'Section',  'Credit', 'Start','End', 'Date', 'Location', 'Online', 'Detail'];
 
   constructor(private registrationService: RegistrationService) { }
 
@@ -20,4 +20,7 @@ export class CourseListComponent implements OnInit {
     })
   }
 
+  ShowDetail(id: number){
+    
+  }
 }

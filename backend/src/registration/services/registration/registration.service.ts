@@ -3,10 +3,12 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { CourseDto } from 'src/registration/dto/course.dto/course-dto';
 import { CourseownerDto } from 'src/registration/dto/courseowner.dto/courseowner-dto';
 import { RegisterDto } from 'src/registration/dto/register.dto/register-dto';
+import { StudentDto } from 'src/registration/dto/student.dto/student-dto';
 import { TeacherDto } from 'src/registration/dto/teacher.dto/teacher-dto';
 import { Course } from 'src/registration/entity/course';
 import { Courseowner } from 'src/registration/entity/courseowner';
 import { Register } from 'src/registration/entity/register';
+import { Student } from 'src/registration/entity/student';
 import { Teacher } from 'src/registration/entity/teacher';
 import { Repository } from 'typeorm';
 
@@ -24,6 +26,9 @@ export class RegistrationService {
 
     @InjectRepository(Register)
     private registerRepository: Repository<Register>,
+
+    @InjectRepository(Student)
+    private studentRepository: Repository<Student>,
   ) {}
 
   // ---------------------Course------------------------
@@ -40,8 +45,8 @@ export class RegistrationService {
     await this.courseRepository.delete(courseID);
   }
 
-  async SearchCourse(courseID: number): Promise<CourseDto> {
-    return await this.courseRepository.findOne({ courseID: courseID });
+  async SearchCourse(courseCode: string): Promise<CourseDto> {
+    return await this.courseRepository.findOne({ courseCode: courseCode });
   }
   // ---------------------Course------------------------
 
@@ -104,4 +109,18 @@ export class RegistrationService {
   }
 
   //---------------------Register---------------------------
+  //---------------------student----------------------------
+
+  CreateStudent(as: StudentDto): Promise<StudentDto> {
+    return this.studentRepository.save(as);
+  }
+
+  GetStudent(): Promise<StudentDto[]> {
+    return this.studentRepository.find();
+  }
+
+  async SearchStudent(studentID: string): Promise<StudentDto> {
+    return await this.studentRepository.findOne({ studentID: studentID });
+  }
+  //---------------------student----------------------------
 }
