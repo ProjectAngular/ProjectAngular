@@ -40,13 +40,15 @@ import { CourseDetailComponent } from './components/course-detail/course-detail.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MainComponent } from './components/main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddCourseComponent,
     CourseListComponent,
-    CourseDetailComponent
+    CourseDetailComponent,
+    MainComponent,
   ],
   imports: [
     AppRoutingModule,

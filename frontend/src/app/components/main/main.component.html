@@ -1,0 +1,87 @@
+<div class="main-content">
+  <nav class="sidebar close">
+    <header>
+      <div class="image-text">
+                <span class="image">
+                    <img src="../../../assets/test.jpg" alt="">
+                </span>
+
+        <div class="text logo-text">
+          <span class="name">ลงทะเบียนเรียน</span>
+          <span class="profession">ชื่อผู้ใช้งาน</span>
+        </div>
+      </div>
+
+      <i class='bx bx-chevron-right toggle'></i>
+    </header>
+
+    <div class="menu-bar">
+      <div class="menu">
+
+        <li class="search-box">
+          <i class='bx bx-search icon'></i>
+          <input type="text" placeholder="ค้นหา...">
+        </li>
+
+        <ul class="menu-links">
+          <li class="nav-link">
+            <a href="main">
+              <i class='bx bx-home-alt icon' ></i>
+              <span class="text nav-text">หน้าหลัก</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a (click)="toListCourse()">
+              <i class='bx bx-table icon'></i>
+              <span class="text nav-text">รายชื่อหลักสูตร</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a (click)="toAddingCourse()">
+              <i class='bx bx-book-add icon'></i>
+              <span class="text nav-text">เพิ่มรายวิชา</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a>
+              <i class='bx bx-calendar-edit icon'></i>
+              <span class="text nav-text">แก้ไขรายวิชา</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a href="#">
+              <i class='bx bx-bar-chart-alt-2 icon' ></i>
+              <span class="text nav-text">สถิติ</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="#">
+                <i class='bx bx-bell icon'></i>
+                <span class="text nav-text">แจ้งเตือน</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bottom-content">
+        <li class="">
+          <a href="#">
+            <i class='bx bx-log-out icon' ></i>
+            <span class="text nav-text">ออกจากระบบ</span>
+          </a>
+        </li>
+      </div>
+    </div>
+  </nav>
+  <!-- Button to top -->
+  <button (click)="topFunction()" class="toTopBtn" id="toTopBtn" title="Go to top"><i class='bx bxs-chevron-up'></i></button>
+
+
+  <section class="home">
+<!--    <div class="text">หน้าหลัก</div>-->
+    <app-add-course *ngIf="isAddingCourse"></app-add-course>
+    <app-course-list *ngIf="isListCourse"></app-course-list>
+
+  </section>
+</div>
