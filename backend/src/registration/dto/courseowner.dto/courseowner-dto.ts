@@ -7,6 +7,6 @@ export class CourseownerDto {
   @IsString()
   teacherID: string;
 
-  @IsNumber()
+  @IsString()
   courseSection: string;
 }
