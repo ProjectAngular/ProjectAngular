@@ -28,6 +28,7 @@ export class RegistrationController {
       const newCourseowner: CourseownerDto = {
         courseCode: newCourse.courseCode,
         teacherID: teacher.teacherID,
+        courseSection: newCourse.courseSection,
       };
       this.registrationService.CreateCourseowner(newCourseowner);
     }
