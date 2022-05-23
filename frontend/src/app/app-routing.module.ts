@@ -4,9 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddCourseComponent } from './components/add-course/add-course.component';
 import { CourseDetailComponent } from './components/course-detail/course-detail.component';
 import { CourseListComponent } from './components/course-list/course-list.component';
+import {MainComponent} from "./components/main/main.component";
 
 const routes: Routes = [
-  {path: '',pathMatch:'full', redirectTo: 'add-course'},
+  {path: '',pathMatch:'full', redirectTo: 'main'},
+  {path: 'main',component:MainComponent},
   {path: 'course-list', component: CourseListComponent},
   {path: 'add-course', component: AddCourseComponent},
   {path: 'edit-course', component: CourseDetailComponent},
