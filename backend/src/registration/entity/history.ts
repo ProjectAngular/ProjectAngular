@@ -9,8 +9,8 @@ export class History {
   studentID: string;
 
   @Column()
-  term: number;
+  status: string;
 
   @Column()
-  year: number;
+  year: string;
 }

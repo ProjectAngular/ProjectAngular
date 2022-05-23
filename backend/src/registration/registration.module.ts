@@ -8,6 +8,7 @@ import { Teacher } from './entity/teacher';
 import { Student } from './entity/student';
 import { Register } from './entity/register';
 import { History } from './entity/history';
+import { StudentregistrationController } from './controller/studentregistration/studentregistration.controller';
 
 @Module({
   imports: [
@@ -18,7 +19,7 @@ import { History } from './entity/history';
     TypeOrmModule.forFeature([Register]),
     TypeOrmModule.forFeature([History]),
   ],
-  controllers: [RegistrationController],
+  controllers: [RegistrationController, StudentregistrationController],
   providers: [RegistrationService],
 })
 export class RegistrationModule {}

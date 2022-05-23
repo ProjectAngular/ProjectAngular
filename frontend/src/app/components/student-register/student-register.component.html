@@ -1,0 +1,27 @@
+<form [formGroup]="studentRegisterGroup" >
+    <mat-card>
+        <mat-card-title>REGISTER 1/2565</mat-card-title>
+        <mat-card-actions>
+            <mat-form-field appearance="fill" id="form">
+                <mat-label>รหัสวิชา</mat-label>
+                <input matInput formControlName="courseCode">
+            </mat-form-field><mat-form-field appearance="fill" id="form">
+                <mat-label>ตอนเรียน</mat-label>
+                <input matInput formControlName="courseSection">
+            </mat-form-field>
+            <mat-form-field appearance="fill" id="form">
+                <mat-label>รหัสนักศึกษา</mat-label>
+                <input matInput formControlName="studentID">
+            </mat-form-field>
+            <mat-form-field appearance="fill" id="form">
+                <mat-label>ภาคการศึกษา</mat-label>
+                <input matInput [(ngModel)]="year" formControlName="year"[readonly]="true">
+            </mat-form-field>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="onSubmit()">SUBMIT</button>
+            </mat-card-actions>
+        </mat-card-actions>
+    </mat-card>
+</form>
+
+

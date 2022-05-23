@@ -41,6 +41,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './components/main/main.component';
+import { StudentRegisterComponent } from './components/student-register/student-register.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { MainComponent } from './components/main/main.component';
     CourseListComponent,
     CourseDetailComponent,
     MainComponent,
+    StudentRegisterComponent,
   ],
   imports: [
     AppRoutingModule,

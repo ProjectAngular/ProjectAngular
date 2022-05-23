@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CourseDto } from 'src/registration/dto/course.dto/course-dto';
 import { CourseownerDto } from 'src/registration/dto/courseowner.dto/courseowner-dto';
+import { HistoryDto } from 'src/registration/dto/history.dto/history-dto';
 import { RegisterDto } from 'src/registration/dto/register.dto/register-dto';
 import { StudentDto } from 'src/registration/dto/student.dto/student-dto';
 import { TeacherDto } from 'src/registration/dto/teacher.dto/teacher-dto';
@@ -10,6 +11,7 @@ import { Courseowner } from 'src/registration/entity/courseowner';
 import { Register } from 'src/registration/entity/register';
 import { Student } from 'src/registration/entity/student';
 import { Teacher } from 'src/registration/entity/teacher';
+import { History } from 'src/registration/entity/history';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -29,6 +31,9 @@ export class RegistrationService {
 
     @InjectRepository(Student)
     private studentRepository: Repository<Student>,
+
+    @InjectRepository(History)
+    private historyRepository: Repository<History>,
   ) {}
 
   // ---------------------Course------------------------
@@ -45,8 +50,9 @@ export class RegistrationService {
     await this.courseRepository.delete(courseID);
   }
 
-  async SearchCourse(courseCode: string): Promise<CourseDto> {
-    return await this.courseRepository.findOne({ courseCode: courseCode });
+  async SearchCourse(courseCode: string,courseSection: string): Promise<CourseDto> {
+    return await this.courseRepository.findOne({ courseCode: courseCode,
+      courseSection: courseSection});
   }
   // ---------------------Course------------------------
 
@@ -86,10 +92,12 @@ export class RegistrationService {
   async SearchCourseowner(
     courseCode: string,
     teacherID: string,
+    courseSection: string
   ): Promise<CourseownerDto> {
     return await this.courseownerRepository.findOne({
       courseCode: courseCode,
       teacherID: teacherID,
+      courseSection: courseSection
     });
   }
   // --------------------Courseowner------------------------
@@ -123,4 +131,14 @@ export class RegistrationService {
     return await this.studentRepository.findOne({ studentID: studentID });
   }
   //---------------------student----------------------------
+
+  //---------------------history----------------------------
+  CreateHistory(ar: HistoryDto): Promise<HistoryDto> {
+    return this.historyRepository.save(ar);
+  }
+
+  GetHistory(): Promise<HistoryDto[]> {
+    return this.historyRepository.find();
+  }
+  //---------------------history----------------------------
 }

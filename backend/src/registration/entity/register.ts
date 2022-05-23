@@ -5,6 +5,12 @@ export class Register {
   @PrimaryColumn()
   courseCode: string;
 
+  @Column()
+  courseSection: string;
+
   @PrimaryColumn()
   studentID: string;
+
+  @Column()
+  year: string;
 }

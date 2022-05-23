@@ -40,12 +40,13 @@ export class RegistrationController {
     return this.registrationService.GetCourse();
   }
 
-  @Put('Course/Edit/:courseCode')
+  @Put('Course/Edit/:courseCode/:courseSection')
   async UpdateCourse(
     @Param('courseCode') courseCode: string,
+    @Param('courseSection') courseSection:string,
     @Body() newCourse: CourseDto,
   ): Promise<CourseDto> {
-    const course = await this.registrationService.SearchCourse(courseCode);
+    const course = await this.registrationService.SearchCourse(courseCode,courseSection);
     course.courseCode = newCourse.courseCode;
     course.courseTitle = newCourse.courseTitle;
     course.courseCredit = newCourse.courseCredit;
@@ -84,7 +85,7 @@ export class RegistrationController {
   @Post('Register/Add')
   async CreateRegister(@Body() newRegister: RegisterDto): Promise<RegisterDto> {
     const course = await this.registrationService.SearchCourse(
-      newRegister.courseCode,
+      newRegister.courseCode,newRegister.courseSection
     );
     const student = await this.registrationService.SearchStudent(
       newRegister.studentID,

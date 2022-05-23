@@ -1,15 +1,15 @@
 import { IsNumber, IsString } from 'class-validator';
 
 export class HistoryDto {
-  @IsNumber()
-  courseID: number;
+  @IsString()
+  courseCode: string;
 
   @IsString()
   studentID: string;
 
-  @IsNumber()
-  term: number;
+  @IsString()
+  status: string;
 
-  @IsNumber()
-  year: number;
+  @IsString()
+  year: string;
 }
