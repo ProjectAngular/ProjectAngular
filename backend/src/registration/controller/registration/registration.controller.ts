@@ -31,8 +31,9 @@ export class RegistrationController {
         courseSection: newCourse.courseSection,
       };
       this.registrationService.CreateCourseowner(newCourseowner);
+      this.registrationService.CreateCourse(newCourse);
     }
-    return this.registrationService.CreateCourse(newCourse);
+    return null;
   }
 
   @Get('Course/All')
@@ -43,10 +44,13 @@ export class RegistrationController {
   @Put('Course/Edit/:courseCode/:courseSection')
   async UpdateCourse(
     @Param('courseCode') courseCode: string,
-    @Param('courseSection') courseSection:string,
+    @Param('courseSection') courseSection: string,
     @Body() newCourse: CourseDto,
   ): Promise<CourseDto> {
-    const course = await this.registrationService.SearchCourse(courseCode,courseSection);
+    const course = await this.registrationService.SearchCourse(
+      courseCode,
+      courseSection,
+    );
     course.courseCode = newCourse.courseCode;
     course.courseTitle = newCourse.courseTitle;
     course.courseCredit = newCourse.courseCredit;
@@ -85,7 +89,8 @@ export class RegistrationController {
   @Post('Register/Add')
   async CreateRegister(@Body() newRegister: RegisterDto): Promise<RegisterDto> {
     const course = await this.registrationService.SearchCourse(
-      newRegister.courseCode,newRegister.courseSection
+      newRegister.courseCode,
+      newRegister.courseSection,
     );
     const student = await this.registrationService.SearchStudent(
       newRegister.studentID,
@@ -99,4 +104,23 @@ export class RegistrationController {
   GetRegister(): Promise<RegisterDto[]> {
     return this.registrationService.GetRegister();
   }
+  //------------------------Register------------------------------
+
+  //------------------------Courseowner------------------------------
+  @Get('Courseowner/Teachowner/:TeacherID')
+  async ShowTeachowner(
+    @Param('TeacherID') TeacherID: string,
+  ): Promise<CourseDto[]> {
+    const course = await this.registrationService.ShowTeachowner(TeacherID);
+    const courseTeach: CourseDto[] = [];
+    for (let i = 0; i < course.length; i++) {
+      const teach = await this.registrationService.GetTeachCourse(
+        course[i].courseCode,
+        course[i].courseSection,
+      );
+      courseTeach.push(teach);
+    }
+    return courseTeach;
+  }
+  //------------------------Courseowner------------------------------
 }

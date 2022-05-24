@@ -1,6 +1,9 @@
 {
   "dependencies": {
     "@nestjs/mongoose": "^9.0.3",
-    "mongoose": "^6.3.4"
+    "@nestjs/typeorm": "^8.0.4",
+    "mongoose": "^6.3.4",
+    "sqlite3": "^5.0.8",
+    "typeorm": "^0.2.45"
   }
 }

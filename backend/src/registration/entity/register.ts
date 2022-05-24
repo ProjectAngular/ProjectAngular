@@ -2,13 +2,17 @@ import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Register {
-  @PrimaryColumn()
+  
+  @PrimaryGeneratedColumn()
+  r_id: number;
+
+  @Column()
   courseCode: string;
 
   @Column()
   courseSection: string;
 
-  @PrimaryColumn()
+  @Column()
   studentID: string;
 
   @Column()

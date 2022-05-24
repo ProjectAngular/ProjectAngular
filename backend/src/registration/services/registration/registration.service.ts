@@ -13,6 +13,7 @@ import { Student } from 'src/registration/entity/student';
 import { Teacher } from 'src/registration/entity/teacher';
 import { History } from 'src/registration/entity/history';
 import { Repository } from 'typeorm';
+import { async } from 'rxjs';
 
 @Injectable()
 export class RegistrationService {
@@ -50,9 +51,24 @@ export class RegistrationService {
     await this.courseRepository.delete(courseID);
   }
 
-  async SearchCourse(courseCode: string,courseSection: string): Promise<CourseDto> {
-    return await this.courseRepository.findOne({ courseCode: courseCode,
-      courseSection: courseSection});
+  async SearchCourse(
+    courseCode: string,
+    courseSection: string,
+  ): Promise<CourseDto> {
+    return await this.courseRepository.findOne({
+      courseCode: courseCode,
+      courseSection: courseSection,
+    });
+  }
+  async SearchCourse2(courseCode: string): Promise<CourseDto> {
+    return await this.courseRepository.findOne({ courseCode: courseCode });
+  }
+
+  GetTeachCourse(courseCode: string, num: string): Promise<CourseDto> {
+    return this.courseRepository.findOne({
+      courseCode: courseCode,
+      courseSection: num,
+    });
   }
   // ---------------------Course------------------------
 
@@ -89,15 +105,19 @@ export class RegistrationService {
     await this.courseownerRepository.delete(courseCode);
   }
 
+  async ShowTeachowner(teacherID: string): Promise<CourseownerDto[]> {
+    return await this.courseownerRepository.find({ teacherID: teacherID });
+  }
+
   async SearchCourseowner(
     courseCode: string,
     teacherID: string,
-    courseSection: string
+    courseSection: string,
   ): Promise<CourseownerDto> {
     return await this.courseownerRepository.findOne({
       courseCode: courseCode,
       teacherID: teacherID,
-      courseSection: courseSection
+      courseSection: courseSection,
     });
   }
   // --------------------Courseowner------------------------
@@ -112,8 +132,22 @@ export class RegistrationService {
     return this.registerRepository.find();
   }
 
-  async RemoveRegister(studentID: string): Promise<void> {
-    await this.registerRepository.delete(studentID);
+  GetRegisterowner(studentID: string): Promise<RegisterDto[]> {
+    return this.registerRepository.find({ studentID: studentID });
+  }
+
+  GetRegisterowner2(
+    studentID: string,
+    courseCode: string,
+  ): Promise<RegisterDto> {
+    return this.registerRepository.findOne({
+      studentID: studentID,
+      courseCode: courseCode,
+    });
+  }
+
+  async RemoveRegister(r_id: number): Promise<void> {
+    await this.registerRepository.delete(r_id);
   }
 
   //---------------------Register---------------------------
@@ -130,15 +164,26 @@ export class RegistrationService {
   async SearchStudent(studentID: string): Promise<StudentDto> {
     return await this.studentRepository.findOne({ studentID: studentID });
   }
+
+  ShowHistory(studentID: string): Promise<HistoryDto[]> {
+    return this.historyRepository.find({ studentID: studentID });
+  }
   //---------------------student----------------------------
 
   //---------------------history----------------------------
-  CreateHistory(ar: HistoryDto): Promise<HistoryDto> {
+  CreateHistory(ar: HistoryDto): Promise<History> {
     return this.historyRepository.save(ar);
   }
 
   GetHistory(): Promise<HistoryDto[]> {
     return this.historyRepository.find();
+  }
+
+  GetHistoryOwner(studentID: string, courseCode: string): Promise<HistoryDto> {
+    return this.historyRepository.findOne({
+      studentID: studentID,
+      courseCode: courseCode,
+    });
   }
   //---------------------history----------------------------
 }
