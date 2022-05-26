@@ -120,6 +120,15 @@ export class RegistrationService {
       courseSection: courseSection,
     });
   }
+  async SearchCourseowner2(
+    courseCode: string,
+    teacherID: string,
+  ): Promise<CourseownerDto> {
+    return await this.courseownerRepository.findOne({
+      courseCode: courseCode,
+      teacherID: teacherID,
+    });
+  }
   // --------------------Courseowner------------------------
 
   //---------------------Register---------------------------
@@ -132,6 +141,15 @@ export class RegistrationService {
     return this.registerRepository.find();
   }
 
+  GetRegister2(
+    courseCode: string,
+    courseSection: string,
+  ): Promise<RegisterDto[]> {
+    return this.registerRepository.find({
+      courseCode: courseCode,
+      courseSection: courseSection,
+    });
+  }
   GetRegisterowner(studentID: string): Promise<RegisterDto[]> {
     return this.registerRepository.find({ studentID: studentID });
   }
@@ -169,11 +187,10 @@ export class RegistrationService {
     return this.historyRepository.find({ studentID: studentID });
   }
 
-  StudentListOrderByCourse(
-    teacherID: string,
-    courseCode: string,
-  ): Promise<StudentDto[]> {
-    return this.studentRepository;
+  StudentListOrderByCourse(studentID: string): Promise<StudentDto> {
+    return this.studentRepository.findOne({
+      studentID: studentID,
+    });
   }
 
   //---------------------student----------------------------

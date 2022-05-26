@@ -133,13 +133,26 @@ export class RegistrationController {
   //------------------------Courseowner------------------------------
 
   @Get('Course/Detail/:teacherID/:courseCode') //********************** */
-  getStudentListOrderByCourse(
+  async getStudentListOrderByCourse(
     @Param('teacherID') teacherID: string,
     @Param('courseCode') courseCode: string,
   ): Promise<StudentDto[]> {
-    return this.registrationService.StudentListOrderByCourse(
-      teacherID,
+    const course = await this.registrationService.SearchCourseowner2(
       courseCode,
+      teacherID,
     );
+    const registerCourseList = await this.registrationService.GetRegister2(
+      courseCode,
+      course.courseSection,
+    );
+    const studentList: StudentDto[] = [];
+    for (let i = 0; i < registerCourseList.length; i++) {
+      studentList.push(
+        await this.registrationService.StudentListOrderByCourse(
+          registerCourseList[i].studentID
+        ),
+      );
+    }
+    return studentList;
   }
 }
