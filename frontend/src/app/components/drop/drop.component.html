@@ -1,0 +1,22 @@
+<div class="adding-content">
+  <form [formGroup]="dropGroup" >
+    <mat-card>
+      <mat-card-title>Student</mat-card-title>
+      <!-- <mat-card-subtitle>Start</mat-card-subtitle> -->
+      <mat-card-actions>
+        <mat-form-field appearance="fill" id="form">
+          <mat-label>รหัสประจำตัว</mat-label>
+          <input matInput formControlName="studentID" >
+        </mat-form-field>
+        <mat-form-field appearance="fill" id="form">
+          <mat-label>รหัสวิชา</mat-label>
+          <input matInput formControlName="courseCode" >
+        </mat-form-field>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="onSubmit()" >SUBMIT</button>
+        </mat-card-actions>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+
+</div>

@@ -14,8 +14,6 @@ export class AddCourseComponent implements OnInit {
 
   constructor(
     public formBuilder: FormBuilder,
-    private router: Router,
-    private ngZone: NgZone,
     private registrationService: RegistrationService
   ) {
     this.courseGroup = this.formBuilder.group({
@@ -39,17 +37,8 @@ export class AddCourseComponent implements OnInit {
   onSubmit(){
     this.registrationService.AddCourse(this.courseGroup.value, this.courseGroup.value.teacherID)
     .subscribe(() => {
-      // this.ngZone.run(() => this.router.navigateByUrl('/index'))
     }, (err) => {
       console.log(err);
     })
-
-    // this.registerService.Addcourseowner(this.courseGroup.value)
-    // .subscribe(() => {
-    //   console.log(this.courseGroup.value)
-    //   this.ngZone.run(() => this.router.navigateByUrl('/index'))
-    // }, (err) => {
-    //   console.log(err);
-    // })
   }
 }

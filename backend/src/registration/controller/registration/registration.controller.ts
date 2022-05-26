@@ -12,6 +12,7 @@ import { CourseDto } from 'src/registration/dto/course.dto/course-dto';
 import { TeacherDto } from 'src/registration/dto/teacher.dto/teacher-dto';
 import { CourseownerDto } from 'src/registration/dto/courseowner.dto/courseowner-dto';
 import { RegisterDto } from 'src/registration/dto/register.dto/register-dto';
+import { StudentDto } from 'src/registration/dto/student.dto/student-dto';
 
 @Controller('registration')
 export class RegistrationController {
@@ -39,6 +40,13 @@ export class RegistrationController {
   @Get('Course/All')
   GetCourse(): Promise<CourseDto[]> {
     return this.registrationService.GetCourse();
+  }
+
+  @Get('Course/:courseCode')
+  async GetCoursOnee(
+    @Param('courseCode') courseCode: string,
+  ): Promise<CourseDto> {
+    return await this.registrationService.SearchCourse2(courseCode);
   }
 
   @Put('Course/Edit/:courseCode/:courseSection')
@@ -123,4 +131,15 @@ export class RegistrationController {
     return courseTeach;
   }
   //------------------------Courseowner------------------------------
+
+  @Get('Course/Detail/:teacherID/:courseCode') //********************** */
+  getStudentListOrderByCourse(
+    @Param('teacherID') teacherID: string,
+    @Param('courseCode') courseCode: string,
+  ): Promise<StudentDto[]> {
+    return this.registrationService.StudentListOrderByCourse(
+      teacherID,
+      courseCode,
+    );
+  }
 }

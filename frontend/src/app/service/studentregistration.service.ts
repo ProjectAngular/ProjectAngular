@@ -8,6 +8,14 @@ export class Register {
   courseSection!: string;
 }
 
+export class History {
+  h_id!: number;
+  courseCode!: string;
+  studentID!: string;
+  status!: string;
+  year!: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +26,7 @@ export class StudentregistrationService {
 
   constructor(private httpClient : HttpClient) { }
 
-  AddCourse(data: Register,studentID: any):Observable<any>{
+  Register(data: Register,studentID: any):Observable<any>{
     let API_URL = `${this.REST_API}Register/Add`;
     return this.httpClient.post(API_URL, data)
     .pipe(catchError(this.handleError));
@@ -26,6 +34,22 @@ export class StudentregistrationService {
 
   GetCourse() {
     return this.httpClient.get(`${this.REST_API}Course/All`);
+  }
+
+  GetTableStudent(studentID: any) {
+    return this.httpClient.get(`${this.REST_API}StudyTable/${studentID}`);
+  }
+
+  Drop(studentID:any, courseCode:any) {
+    return this.httpClient.delete(`${this.REST_API}Drop/${studentID}/${courseCode}`);
+  }
+
+  GetHistory(studentID:any){
+    return this.httpClient.get(`${this.REST_API}Studenthistory/${studentID}`);
+  }
+
+  GetCourseOne(courseCode:any){
+    return this.httpClient.get(`http://localhost:3000/registration/Course/${courseCode}`);
   }
 
   handleError(error: any) {

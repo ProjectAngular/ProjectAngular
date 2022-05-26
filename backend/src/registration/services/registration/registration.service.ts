@@ -168,6 +168,14 @@ export class RegistrationService {
   ShowHistory(studentID: string): Promise<HistoryDto[]> {
     return this.historyRepository.find({ studentID: studentID });
   }
+
+  StudentListOrderByCourse(
+    teacherID: string,
+    courseCode: string,
+  ): Promise<StudentDto[]> {
+    return this.studentRepository;
+  }
+
   //---------------------student----------------------------
 
   //---------------------history----------------------------

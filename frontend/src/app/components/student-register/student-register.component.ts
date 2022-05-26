@@ -13,12 +13,10 @@ export class StudentRegisterComponent implements OnInit {
   year: string = '1/2565';
 
   studentRegisterGroup: FormGroup
-  
+
   constructor(
     public formBuilder: FormBuilder,
-    private router: Router,
-    private ngZone: NgZone,
-    private registrationService: StudentregistrationService
+    private sService: StudentregistrationService
   ) {
     this.studentRegisterGroup = this.formBuilder.group({
       courseCode: [''],
@@ -29,12 +27,12 @@ export class StudentRegisterComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    
+
   }
 
   onSubmit(){
     console.log(this.studentRegisterGroup.value);
-    this.registrationService.AddCourse(this.studentRegisterGroup.value, this.studentRegisterGroup.value.studentID)
+    this.sService.Register(this.studentRegisterGroup.value, this.studentRegisterGroup.value.studentID)
     .subscribe(() => {
       // this.ngZone.run(() => this.router.navigateByUrl('/index'))
     }, (err) => {

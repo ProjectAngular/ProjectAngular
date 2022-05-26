@@ -35,8 +35,24 @@ export class RegistrationService {
     return this.httpClient.get(`${this.REST_API}Course/All`);
   }
 
-  GetTeacher() {
+  GetCourseOne(courseCode: string) {
+    return this.httpClient.get(`${this.REST_API}Course/${courseCode}`);
+  }
 
+  GetTableTeacher(teacherID: any) {
+    return this.httpClient.get(`${this.REST_API}Courseowner/Teachowner/${teacherID}`);
+  }
+
+  GetStudentListOrderByCourse(teacherID: string, courseCode: string) {
+    return this.httpClient.get(`${this.REST_API}Course/Detail/${teacherID}/${courseCode}`);
+  }
+
+  UpdateDate(code:string,section:string,data:Course) {
+    return this.httpClient.put<Course>(`${this.REST_API}Course/Edit/${code}/${section}`,data);
+  }
+
+  Remove(courseID:number){
+    return this.httpClient.delete(`${this.REST_API}Course/Delete/${courseID}`);
   }
 
   handleError(error: any) {

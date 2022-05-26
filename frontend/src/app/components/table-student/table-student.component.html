@@ -1,18 +1,19 @@
 <div class="adding-content">
-  <form [formGroup]="teacherGroup" >
+  <form [formGroup]="studentGroup" >
     <mat-card>
-      <mat-card-title>Tacher</mat-card-title>
+      <mat-card-title>Student</mat-card-title>
       <!-- <mat-card-subtitle>Start</mat-card-subtitle> -->
       <mat-card-actions>
         <mat-form-field appearance="fill" id="form">
           <mat-label>รหัสประจำตัว</mat-label>
-          <input matInput formControlName="teacherID" >
+          <input matInput formControlName="studentID" >
         </mat-form-field>
         <mat-card-actions>
           <button mat-raised-button color="primary" (click)="onSubmit()" >SUBMIT</button>
         </mat-card-actions>
       </mat-card-actions>
     </mat-card>
+  </form>
   <table mat-table [dataSource]="Courses" class="mat-elevation-z8">
 
     <ng-container matColumnDef="No">
@@ -66,18 +67,17 @@
       <td mat-cell *matCellDef="let course"> {{course.courseOnline}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="Detail">
+    <!-- <ng-container matColumnDef="Detail">
       <th mat-header-cell *matHeaderCellDef> </th>
       <td mat-cell *matCellDef="let course">
-        <button type="button" class="button is-danger" routerLink="/edit-course/{{teacherGroup.value.teacherID}}/{{course.courseCode}}">Edit</button>
-        <button type="button" class="button is-warning" (click)="Delete(course.courseID)">Delete</button>
+        <button type="button" class="button is-danger">Edit</button>
+        <button type="button" class="button is-warning">Delete</button>
       </td>
 
-    </ng-container>
+    </ng-container> -->
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-</form>
 
 </div>

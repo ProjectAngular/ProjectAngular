@@ -42,6 +42,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './components/main/main.component';
 import { StudentRegisterComponent } from './components/student-register/student-register.component';
+import { TableTeacherComponent } from './components/table-teacher/table-teacher.component';
+import { TableStudentComponent } from './components/table-student/table-student.component';
+import { DropComponent } from './components/drop/drop.component';
+import { RegisterHistoryComponent } from './components/register-history/register-history.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +55,10 @@ import { StudentRegisterComponent } from './components/student-register/student-
     CourseDetailComponent,
     MainComponent,
     StudentRegisterComponent,
+    TableTeacherComponent,
+    TableStudentComponent,
+    DropComponent,
+    RegisterHistoryComponent,
   ],
   imports: [
     AppRoutingModule,

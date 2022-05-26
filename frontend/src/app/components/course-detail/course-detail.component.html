@@ -1,1 +1,82 @@
-<p>course-detail works!</p>
+<div class="adding-content">
+  <form [formGroup]="updateForm" >
+    <mat-card>
+      <mat-card-title>{{courseTitle}}</mat-card-title>
+      <mat-card-actions>
+        <mat-form-field appearance="fill" id="form">
+          <mat-label>รหัสวิชา</mat-label>
+          <input matInput formControlName="courseCode" >
+        </mat-form-field>
+        <mat-form-field appearance="fill" id="form">
+          <mat-label>ชื่อวิชา</mat-label>
+          <input matInput formControlName="courseTitle" >
+        </mat-form-field>
+        <mat-form-field appearance="fill" id="form">
+          <mat-label>หน่วยกิต</mat-label>
+          <input matInput formControlName="courseCredit" >
+        </mat-form-field>
+        <mat-form-field appearance="fill" id="form">
+          <mat-label>เวลาเริ่มเรียน</mat-label>
+          <input matInput formControlName="courseTimestart" >
+        </mat-form-field>
+        <mat-form-field appearance="fill" id="form" >
+          <mat-label>เวลาหมดคลาส</mat-label>
+          <input matInput formControlName="courseTimeend" >
+        </mat-form-field>
+        <mat-form-field appearance="fill" id="form">
+          <mat-label>วันเรียน</mat-label>
+          <input matInput formControlName="courseDate" >
+        </mat-form-field>
+        <mat-form-field appearance="fill" id="form">
+          <mat-label>ห้องเรียน</mat-label>
+          <input matInput formControlName="courseLocation" >
+        </mat-form-field>
+        <mat-form-field appearance="fill" id="form">
+          <mat-label>ห้องเรียนออนไลน์</mat-label>
+          <input matInput formControlName="courseOnline" >
+        </mat-form-field>
+        <mat-form-field appearance="fill" id="form">
+          <mat-label>ตอนเรียน</mat-label>
+          <input matInput formControlName="courseSection" >
+        </mat-form-field>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="onSubmit()" >SUBMIT</button>
+        </mat-card-actions>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+  <form [formGroup]="registerForm" >
+    <mat-card>
+      <!-- <mat-card-title>{{courseTitle}}</mat-card-title> -->
+      <mat-card-actions>
+        <mat-form-field appearance="fill" id="form">
+          <mat-label>รหัสนักศึกษา</mat-label>
+          <input matInput formControlName="studentID">
+          </mat-form-field>
+          <mat-form-field appearance="fill" id="form">
+              <mat-label>ภาคการศึกษา</mat-label>
+              <input matInput [(ngModel)]="year" formControlName="year"[readonly]="true">
+          </mat-form-field>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="onSubmitRegister()" >SUBMIT</button>
+        </mat-card-actions>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+  <table mat-table [dataSource]="Students" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="ID">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let student"> {{student.studentID}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let student"> {{student.studentName}} </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

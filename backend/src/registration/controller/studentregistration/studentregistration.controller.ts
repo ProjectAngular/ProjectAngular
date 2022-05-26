@@ -26,7 +26,7 @@ export class StudentregistrationController {
   }
 
   //------------------------Register------------------------------
-  @Post('Register/Add')
+  @Post('Register/Add') //********************** */
   async CreateRegister(@Body() newRegister: RegisterDto): Promise<RegisterDto> {
     const course = await this.registrationService.SearchCourse(
       newRegister.courseCode,
@@ -40,18 +40,12 @@ export class StudentregistrationController {
       newHistory.studentID = newRegister.studentID;
       newHistory.status = 'เพิ่ม';
       newHistory.year = newRegister.year;
-      // const newHistory: HistoryDto = {
-      //   courseCode: newRegister.courseCode,
-      //   studentID: newRegister.studentID,
-      //   status: 'เพิ่ม',
-      //   year: newRegister.year,
-      // };
       this.registrationService.CreateHistory(newHistory);
       return this.registrationService.CreateRegister(newRegister);
     }
     return null;
   }
-  @Delete('Drop/:StudentID/:courseCode')
+  @Delete('Drop/:StudentID/:courseCode') //ดรอป
   async DropCourse(
     @Param('StudentID') studentID: string,
     @Param('courseCode') courseCode: string,
@@ -78,7 +72,7 @@ export class StudentregistrationController {
   }
 
   //------------------------Student----------------------------------
-  @Get('Studenthistory/:studentID')
+  @Get('Studenthistory/:studentID') // ประวัติการเพิ่มถอน
   async GetHistoryowner(
     @Param('studentID') studentID: string,
   ): Promise<HistoryDto[]> {
@@ -98,7 +92,7 @@ export class StudentregistrationController {
     }
     return hac;
   }
-  @Get('StudyTable/:studentID')
+  @Get('StudyTable/:studentID') //ตารางเรียน
   async GetStudentDate(
     @Param('studentID') studentID: string,
   ): Promise<RegisterDto[]> {
@@ -127,7 +121,7 @@ export class StudentregistrationController {
     return rac;
   }
 
-  @Post('student/add')
+  @Post('Student/add')
   addStudent(@Body() newStudent: StudentDto): Promise<StudentDto> {
     return this.registrationService.CreateStudent(newStudent);
   }
