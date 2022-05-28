@@ -1,6 +1,7 @@
-<form [formGroup]="studentRegisterGroup" >
+<div class="adding-content">
+  <form [formGroup]="studentRegisterGroup" >
     <mat-card>
-        <mat-card-title>REGISTER 1/2565</mat-card-title>
+        <mat-card-title>ลงทะเบียนเรียนปี 1/2565</mat-card-title>
         <mat-card-actions>
             <mat-form-field appearance="fill" id="form">
                 <mat-label>รหัสวิชา</mat-label>
@@ -18,10 +19,11 @@
                 <input matInput [(ngModel)]="year" formControlName="year"[readonly]="true">
             </mat-form-field>
             <mat-card-actions>
-                <button mat-raised-button color="primary" (click)="onSubmit()">SUBMIT</button>
+                <button mat-raised-button color="primary" (click)="onSubmit()">ยืนยัน</button>
             </mat-card-actions>
         </mat-card-actions>
     </mat-card>
 </form>
+</div>
 
 

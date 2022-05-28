@@ -7,8 +7,8 @@
                 </span>
 
         <div class="text logo-text">
-          <span class="name">ลงทะเบียนเรียน</span>
-          <span class="profession">ชื่อผู้ใช้งาน</span>
+          <span class="name">ชื่อผู้ใช้งาน</span>
+          <span class="profession">นักศึกษา/อาจารย์</span>
         </div>
       </div>
 
@@ -25,53 +25,64 @@
 
         <ul class="menu-links">
           <li class="nav-link">
-            <a href="main">
+            <a (click)="toMain()">
               <i class='bx bx-home-alt icon' ></i>
               <span class="text nav-text">หน้าหลัก</span>
             </a>
           </li>
           <li class="nav-link">
-            <a (click)="toListCourse()">
+            <a (click)="toListCourseTeacher()">
               <i class='bx bx-table icon'></i>
+              <span class="text nav-text">ตารางหลักสูตร</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a (click)="toListCourseStudent()">
+              <i class='bx bx-table icon'></i>
+              <span class="text nav-text">ตารางรายวิชา</span>
+            </a>
+          </li>
+          <li class="nav-link">
+            <a (click)="toListCourse()">
+              <i class='bx bx-add-to-queue icon' ></i>
               <span class="text nav-text">รายชื่อหลักสูตร</span>
             </a>
           </li>
           <li class="nav-link">
             <a (click)="toAddingCourse()">
-              <i class='bx bx-book-add icon'></i>
+              <i class='bx bxs-book-add icon' ></i>
               <span class="text nav-text">เพิ่มรายวิชา</span>
             </a>
           </li>
           <li class="nav-link">
-            <a>
-              <i class='bx bx-calendar-edit icon'></i>
-              <span class="text nav-text">แก้ไขรายวิชา</span>
+            <a (click)="toRegister()">
+              <i class='bx bx-book-add icon'></i>
+              <span class="text nav-text">ลงทะเบียนเรียน</span>
             </a>
           </li>
           <li class="nav-link">
-            <a href="#">
-              <i class='bx bx-bar-chart-alt-2 icon' ></i>
-              <span class="text nav-text">สถิติ</span>
+            <a (click)="toHistory()">
+              <i class='bx bx-history icon' ></i>
+              <span class="text nav-text">ประวัติการลงทะเบียน</span>
             </a>
           </li>
-
           <li class="nav-link">
-            <a href="#">
-                <i class='bx bx-bell icon'></i>
-                <span class="text nav-text">แจ้งเตือน</span>
+            <a (click)="toDrop()">
+              <i class='bx bx-message-alt-minus icon' ></i>
+              <span class="text nav-text">เพิกถอนวิชาเรียน</span>
             </a>
           </li>
         </ul>
       </div>
 
-      <div class="bottom-content">
-        <li class="">
-          <a href="#">
-            <i class='bx bx-log-out icon' ></i>
-            <span class="text nav-text">ออกจากระบบ</span>
-          </a>
-        </li>
-      </div>
+     <div class="bottom-content">
+       <li class="">
+         <a href="#">
+           <i class='bx bx-log-out icon' ></i>
+           <span class="text nav-text">ออกจากระบบ</span>
+         </a>
+       </li>
+     </div>
     </div>
   </nav>
   <!-- Button to top -->
@@ -79,9 +90,30 @@
 
 
   <section class="home">
-<!--    <div class="text">หน้าหลัก</div>-->
-    <app-add-course *ngIf="isAddingCourse"></app-add-course>
-    <app-course-list *ngIf="isListCourse"></app-course-list>
 
+  <mat-card *ngIf="isMain">
+    <mat-card-title>วิชาของ Selected Topic 2</mat-card-title>
+    <mat-card-subtitle>&emsp;
+      &emsp;mini project ของรายวิชานี้
+    </mat-card-subtitle>
+    <div class="main-pre">
+      <div class="pre">
+        <p>โปรเจคนี้เป็นส่วนหนึ่งของรายวิชา Selected Topic 2 โดยใช้ github เก็บโปรเจคและร่วมกันทำงานเป็นทีมกับคนภายในกลุ่ม: </p>
+        <a href="https://github.com/ProjectAngular/ProjectAngular" target="_blank">
+          <button>Reponsitory</button>
+        </a>
+      </div>
+      <div>
+        <img src="../../../assets/github.png"/>
+      </div>
+    </div>
+  </mat-card>
+    <app-table-teacher *ngIf="isListCourseTeacher"></app-table-teacher>
+    <app-table-student *ngIf="isListCourseStudent"></app-table-student>
+    <app-course-list *ngIf="isListCourse"></app-course-list>
+    <app-add-course *ngIf="isAddingCourse"></app-add-course>
+    <app-register-history *ngIf="isHistory"></app-register-history>
+    <app-drop *ngIf="isDrop"></app-drop>
+    <app-student-register *ngIf="isRegister"></app-student-register>
   </section>
 </div>

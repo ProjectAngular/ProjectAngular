@@ -1,76 +1,59 @@
 <div class="adding-content">
   <form [formGroup]="courseGroup" >
     <mat-card>
-      <mat-card-title>ADD COURSE</mat-card-title>
-      <!-- <mat-card-subtitle>Start</mat-card-subtitle> -->
+      <mat-card-title>
+        เพิ่มรายวิชา
+      </mat-card-title>
+      <mat-card-subtitle>&emsp;
+        &emsp;สำหรับอาจารย์
+      </mat-card-subtitle>
       <mat-card-actions>
-        <mat-form-field appearance="fill" id="form">
-          <mat-label>รหัสวิชา</mat-label>
-          <input matInput formControlName="courseCode" >
-        </mat-form-field>
-        <mat-form-field appearance="fill" id="form">
-          <mat-label>ชื่อวิชา</mat-label>
-          <input matInput formControlName="courseTitle" >
-        </mat-form-field>
-        <mat-form-field appearance="fill" id="form">
-          <mat-label>หน่วยกิต</mat-label>
-          <input matInput formControlName="courseCredit" >
-        </mat-form-field>
-        <mat-form-field appearance="fill" id="form">
-          <mat-label>เวลาเริ่มเรียน</mat-label>
-          <input matInput formControlName="courseTimestart" >
-        </mat-form-field>
-        <mat-form-field appearance="fill" id="form" >
-          <mat-label>เวลาหมดคลาส</mat-label>
-          <input matInput formControlName="courseTimeend" >
-        </mat-form-field>
-        <mat-form-field appearance="fill" id="form">
-          <mat-label>วันเรียน</mat-label>
-          <input matInput formControlName="courseDate" >
-        </mat-form-field>
-        <mat-form-field appearance="fill" id="form">
-          <mat-label>ห้องเรียน</mat-label>
-          <input matInput formControlName="courseLocation" >
-        </mat-form-field>
-        <mat-form-field appearance="fill" id="form">
-          <mat-label>ห้องเรียนออนไลน์</mat-label>
-          <input matInput formControlName="courseOnline" >
-        </mat-form-field>
-        <mat-form-field appearance="fill" id="form">
-          <mat-label>ตอนเรียน</mat-label>
-          <input matInput formControlName="courseSection" >
-        </mat-form-field>
-        <mat-form-field appearance="fill" id="form">
-          <mat-label>รหัสผู้สอน</mat-label>
-          <input matInput formControlName="teacherID" >
-        </mat-form-field>
-        <mat-card-actions>
-          <button mat-raised-button color="primary" (click)="onSubmit()" >SUBMIT</button>
-        </mat-card-actions>
+        <div class="subject">
+          <mat-form-field appearance="fill" id="form">
+            <mat-label>รหัสวิชา</mat-label>
+            <input matInput formControlName="courseCode" >
+          </mat-form-field>
+          <mat-form-field appearance="fill" id="form">
+            <mat-label>ชื่อวิชา</mat-label>
+            <input matInput formControlName="courseTitle" >
+          </mat-form-field>
+          <mat-form-field appearance="fill" id="form">
+            <mat-label>หน่วยกิต</mat-label>
+            <input matInput formControlName="courseCredit" >
+          </mat-form-field>
+          <mat-form-field appearance="fill" id="form">
+            <mat-label>เวลาเริ่มเรียน</mat-label>
+            <input matInput formControlName="courseTimestart" >
+          </mat-form-field>
+          <mat-form-field appearance="fill" id="form" >
+            <mat-label>เวลาหมดคลาส</mat-label>
+            <input matInput formControlName="courseTimeend" >
+          </mat-form-field>
+          <mat-form-field appearance="fill" id="form">
+            <mat-label>วันเรียน</mat-label>
+            <input matInput formControlName="courseDate" >
+          </mat-form-field>
+          <mat-form-field appearance="fill" id="form">
+            <mat-label>ห้องเรียน</mat-label>
+            <input matInput formControlName="courseLocation" >
+          </mat-form-field>
+          <mat-form-field appearance="fill" id="form">
+            <mat-label>ห้องเรียนออนไลน์</mat-label>
+            <input matInput formControlName="courseOnline" >
+          </mat-form-field>
+          <mat-form-field appearance="fill" id="form">
+            <mat-label>ตอนเรียน</mat-label>
+            <input matInput formControlName="courseSection" >
+          </mat-form-field>
+          <mat-form-field appearance="fill" id="form">
+            <mat-label>รหัสผู้สอน</mat-label>
+            <input matInput formControlName="teacherID" >
+          </mat-form-field>
+          <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="onSubmit()" >ยืนยัน</button>
+          </mat-card-actions>
+        </div>
       </mat-card-actions>
-      <!-- <table>
-        <thead>
-          <tr class="table">
-            <th class="cell100 column1">Iteration</th>
-            <th class="cell100 column2">Xl</th>
-            <th class="cell100 column3">Xr</th>
-            <th class="cell100 column4">Xm</th>
-            <th class="cell100 column5">Error</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr *ngFor="let v of variable">
-            <td>{{ v.iteration }}</td>
-            <td>{{ v.xl }}</td>
-            <td>{{ v.xr }}</td>
-            <td>{{ v.xm }}</td>
-            <td>{{ v.error }}</td>
-          </tr>
-        </tbody>
-      </table> -->
-
-
     </mat-card>
   </form>
 </div>

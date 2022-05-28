@@ -1,4 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
+@import url('https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css');
+
+*{
+  font-family: 'Kanit', sans-serif;
+}
 .adding-content {
-  width: 100%;
+  width: 80%;
+  max-width: 52rem;
   height:max-content;
+  margin: 2rem auto;
+}
+mat-card {
+  padding: 2rem;
+}
+mat-card mat-card-title i{
+  color: #FE5000;
+}
+mat-card mat-form-field {
+  width: 100%;
+  font-size: 16px;
+}
+mat-card .subject {
+  display: flex;
+  flex-flow: column;
+  gap: 2px
+}
+mat-card .subject mat-card-actions button{
+  width: 100%;
+  max-width: 52rem;
+  font-size: 20px;
+  color: #fff;
+  background-color: #FE5000;
 }

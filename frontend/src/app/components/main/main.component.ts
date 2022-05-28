@@ -8,9 +8,14 @@ declare var name:any;
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  isListCourse:boolean = false;
+  isMain:boolean = true;
   isAddingCourse:boolean = false;
-  isEditCourse:boolean = false;
+  isRegister:boolean = false;
+  isHistory:boolean = false;
+  isDrop:boolean = false;
+  isListCourse:boolean = false;
+  isListCourseTeacher:boolean = false;
+  isListCourseStudent:boolean = false;
   constructor() {
 
   }
@@ -42,21 +47,46 @@ export class MainComponent implements OnInit {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }
+  toMain() {
+    this.setToFalse();
+    this.isMain = !this.isMain;
+  }
+  toHistory(){
+    this.setToFalse();
+    this.isHistory = !this.isHistory;
+  }
+  toDrop(){
+    this.setToFalse();
+    this.isDrop = !this.isDrop;
+  }
+  toRegister(){
+    this.setToFalse();
+    this.isRegister = !this.isRegister;
+  }
   toAddingCourse(){
     this.setToFalse();
     this.isAddingCourse = !this.isAddingCourse;
-  }
-  toEditCourse(){
-    this.setToFalse();
-    this.isEditCourse = !this.isEditCourse;
   }
   toListCourse(){
     this.setToFalse();
     this.isListCourse = !this.isListCourse;
   }
+  toListCourseStudent(){
+    this.setToFalse();
+    this.isListCourseStudent = !this.isListCourseStudent;
+  }
+  toListCourseTeacher(){
+    this.setToFalse();
+    this.isListCourseTeacher = !this.isListCourseTeacher;
+  }
   setToFalse(){
+    this.isMain = false;
+    this.isHistory = false;
+    this.isDrop = false;
     this.isAddingCourse = false;
-    this.isEditCourse = false;
+    this.isRegister = false;
     this.isListCourse = false;
+    this.isListCourseStudent= false;
+    this.isListCourseTeacher = false;
   }
 }

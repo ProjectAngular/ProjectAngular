@@ -1,3 +1,71 @@
-table {
-  width: 80%;
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
+@import url('https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css');
+
+*{
+  font-family: 'Kanit', sans-serif;
 }
+.adding-content {
+  width: 92%;
+  height:max-content;
+  margin: 2rem auto;
+}
+mat-card {
+  padding: 2rem;
+}
+mat-card mat-form-field {
+  width: 100%;
+  max-width: 36rem;
+  font-size: 16px;
+}
+mat-card mat-card-actions {
+  margin-left: 2px;
+}
+mat-card mat-card-actions button{
+  width: 100%;
+  max-width: 36rem;
+  font-size: 20px;
+  color: #fff;
+  background-color: #FE5000;
+}
+table {
+  width: 100%;
+  color: #FE5000;
+  text-align: center;
+  margin: 0 auto;
+
+}
+table td {
+  font-size: 16px;
+  font-weight: 400;
+}
+table td .details{
+  display: flex;
+  flex-flow: row;
+  gap: 12px;
+  justify-content: center;
+}
+table td button{
+  cursor: pointer;
+  background-color: #fff;
+  font-size: 16px;
+  padding: 2px 12px;
+  border: solid 1px #FE5000;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.6s cubic-bezier(.25,.8,.25,1);
+}
+table td button:hover {
+  background-color: #FE5000;
+  color: #fff;
+  border: solid 1px #fff;
+
+}
+table th{
+  text-align: center;
+
+  font-size: 18px;
+  font-weight: 400;
+  background-color: #FE5000;
+  color: #fff;
+}
+
